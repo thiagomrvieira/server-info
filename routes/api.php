@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Server;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function () {
+
+    $servers = (new FastExcel)->import('LeaseWeb_servers_filters_assignment.xlsx', function ($line) {
+        return Server::make([
+            'model' => $line['Model'],
+            'ram' => $line['RAM'],
+            'hdd' => $line['HDD'],
+            'location' => $line['Location'],
+            'price' => $line['Price']
+        ]);
+    });
+
+    return $servers->all();
 });
