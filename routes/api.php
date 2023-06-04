@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\V1\LocationController;
 use App\Http\Controllers\API\V1\ServerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -12,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 */
 Route::prefix('v1')->group(function () {
 
-    Route::resource('servers', ServerController::class)->only([
+    Route::apiResource('servers', ServerController::class)->only([
         'index', 'show'
     ]);
+
+    Route::get('locations', [LocationController::class, 'index']);
 
 });
 

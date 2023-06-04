@@ -24,5 +24,10 @@ class ServerEloquentRepository implements ServerRepositoryInterface
 
         return $servers;
     }
+
+    public function locations()
+    {
+        return $this->all()->unique('location');
+    }
 }
 
