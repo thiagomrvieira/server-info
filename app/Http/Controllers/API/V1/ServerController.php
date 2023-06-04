@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API\V1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ServerResource;
 use App\Repositories\Interfaces\ServerRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,9 @@ class ServerController extends Controller
      */
     public function index()
     {
-        return $this->servers->all();
+        return ServerResource::collection(
+            $this->servers->all()
+        );
     }
 
     /**
