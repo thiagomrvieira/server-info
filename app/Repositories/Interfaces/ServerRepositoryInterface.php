@@ -4,6 +4,6 @@ namespace App\Repositories\Interfaces;
 
 Interface ServerRepositoryInterface
 {
-    public function all();
-    public function locations();
+    public function getServers();
+    public function getServersLocations();
 }
