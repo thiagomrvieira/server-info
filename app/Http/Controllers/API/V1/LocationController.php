@@ -15,7 +15,11 @@ class LocationController extends Controller
     ){}
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of server locations.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @throws \Exception
      */
     public function index()
     {

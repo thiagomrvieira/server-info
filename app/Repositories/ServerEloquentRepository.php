@@ -6,6 +6,7 @@ use App\Repositories\Interfaces\ServerRepositoryInterface;
 use App\Services\ExcelService;
 use App\Services\FilterService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 
 class ServerEloquentRepository implements ServerRepositoryInterface
@@ -15,7 +16,15 @@ class ServerEloquentRepository implements ServerRepositoryInterface
         public ExcelService $excelService
     ){}
 
-    public function getServers(Request $request = null)
+    /**
+     * Get filtered servers based on the request parameters.
+     *
+     * @param Request|null $request
+     * @return Collection|Server[]
+     *
+     * @throws \ErrorException
+     */
+    public function getServers(Request $request = null): Collection
     {
         try {
             $servers = $this->excelService->importServers();
@@ -33,7 +42,14 @@ class ServerEloquentRepository implements ServerRepositoryInterface
 
     }
 
-    public function getServersLocations()
+    /**
+     * Get unique server locations.
+     *
+     * @return Collection
+     *
+     * @throws \ErrorException
+     */
+    public function getServersLocations(): Collection
     {
         try {
             $serverLocations = $this->getServers()->unique('location');

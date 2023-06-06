@@ -16,7 +16,10 @@ class ServerController extends Controller
     ){}
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of servers with filtering.
+     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
     {

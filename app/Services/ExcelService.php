@@ -3,13 +3,21 @@
 namespace App\Services;
 
 use App\Models\Server;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Rap2hpoutre\FastExcel\FastExcel;
 
 
 class ExcelService
 {
-    public function importServers()
+    /**
+     * Import servers from Excel file.
+     *
+     * @return Collection|Server[]
+     *
+     * @throws \ErrorException
+     */
+    public function importServers(): Collection
     {
         try {
             $servers = (new FastExcel)->import('LeaseWeb_servers_filters_assignment.xlsx', function ($line) {

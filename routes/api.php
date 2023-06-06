@@ -12,12 +12,7 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 Route::prefix('v1')->group(function () {
-
-    Route::apiResource('servers', ServerController::class)->only([
-        'index', 'show'
-    ]);
-
-    Route::get('locations', [LocationController::class, 'index']);
-
+    Route::get('servers',   [ServerController::class,   'index'])->name('servers.index');
+    Route::get('locations', [LocationController::class, 'index'])->name('locations.index');
 });
 
