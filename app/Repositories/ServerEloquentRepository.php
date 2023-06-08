@@ -7,6 +7,7 @@ use App\Services\ExcelService;
 use App\Services\FilterService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
 class ServerEloquentRepository implements ServerRepositoryInterface
@@ -27,9 +28,12 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     public function getServers(Request $request = null): Collection
     {
         try {
-            $servers = $this->excelService->importServers();
 
-            $filteredServers = $servers
+            if (!Cache::has('servers')) {
+                Cache::put('servers', $this->excelService->importServers());
+            }
+
+            $filteredServers = Cache::get('serverss')
                 ->when($request->ram      ?? false, fn ($servers) => $this->filter->filterByRam($servers, $request))
                 ->when($request->hdd      ?? false, fn ($servers) => $this->filter->filterByHdd($servers, $request))
                 ->when($request->location ?? false, fn ($servers) => $this->filter->filterByLocation($servers, $request));
@@ -52,9 +56,12 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     public function getServersLocations(): Collection
     {
         try {
-            $serverLocations = $this->getServers()->unique('location');
 
-            return $serverLocations;
+            if (!Cache::has('serverLocations')) {
+                Cache::put('serverLocations', $this->getServers()->unique('location'));
+            }
+
+            return Cache::get('serverLocations');
         } catch (\Exception $e) {
             Log::error('An error occurred during retrieving servers location data: ' . $e->getMessage());
             throw new \ErrorException('Error retrieving servers location data.');
