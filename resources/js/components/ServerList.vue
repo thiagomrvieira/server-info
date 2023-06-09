@@ -1,6 +1,8 @@
 <template>
     <div>
         <h1>{{ $t('server_list') }}</h1>
+        <server-filter></server-filter>
+
         <ul>
             <li v-for="server in servers" :key="server.model">
                 <h2>{{ server.model }}</h2>
@@ -14,6 +16,8 @@
 </template>
 
 <script>
+    import ServerFilter from './ServerFilter.vue';
+
     export default {
         data() {
             return {
@@ -33,6 +37,9 @@
                     console.error('Error retrieving server data:', error);
                 }
             },
+        },
+        components: {
+            ServerFilter,
         },
     };
 </script>

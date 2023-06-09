@@ -3,5 +3,9 @@
     "ram": "RAM",
     "hdd": "HDD",
     "location": "Location",
-    "price": "Price"
+    "price": "Price",
+    "filter": "Filter",
+    "harddisk_type": "Harddisk type",
+    "name": "Name",
+    "all": "All"
 }
