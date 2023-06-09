@@ -1,13 +1,13 @@
 <template>
     <div>
-        <h1>Server List</h1>
+        <h1>{{ $t('server_list') }}</h1>
         <ul>
             <li v-for="server in servers" :key="server.model">
                 <h2>{{ server.model }}</h2>
-                <p>RAM: {{ server.ram.capacity }} ({{ server.ram.type }})</p>
-                <p>HDD: {{ server.hdd.capacity }} ({{ server.hdd.type }})</p>
-                <p>Location: {{ server.location.name }} ({{ server.location.code }})</p>
-                <p>Price: {{ server.price }}</p>
+                <p>{{ $t('ram') }}: {{ server.ram.capacity }} ({{ server.ram.type }})</p>
+                <p>{{ $t('hdd') }}: {{ server.hdd.capacity }} ({{ server.hdd.type }})</p>
+                <p>{{ $t('location') }}: {{ server.location.name }} ({{ server.location.code }})</p>
+                <p>{{ $t('price') }}: {{ server.price }}</p>
             </li>
         </ul>
     </div>

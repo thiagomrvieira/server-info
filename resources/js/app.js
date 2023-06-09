@@ -1,11 +1,17 @@
-import './bootstrap';
-
 import { createApp } from 'vue';
+import { createI18n } from 'vue-i18n';
+import ServerList from './components/ServerList.vue';
+import enTranslations from './locales/en.json';
 
-import ServerList from "./components/ServerList.vue";
+const app = createApp(ServerList);
 
-const app = createApp();
+// Translations
+const i18n = createI18n({
+    locale: 'en',
+    messages: {
+        en: enTranslations,
+    },
+});
 
-app.component('server-list', ServerList);
-
-app.mount("#app");
+app.use(i18n);
+app.mount('#app');
