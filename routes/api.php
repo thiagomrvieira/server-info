@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\API\V1\LocationController;
 use App\Http\Controllers\API\V1\ServerController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
