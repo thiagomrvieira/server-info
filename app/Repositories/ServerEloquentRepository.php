@@ -33,7 +33,7 @@ class ServerEloquentRepository implements ServerRepositoryInterface
                 Cache::put('servers', $this->excelService->importServers());
             }
 
-            $filteredServers = Cache::get('serverss')
+            $filteredServers = Cache::get('servers')
                 ->when($request->ram      ?? false, fn ($servers) => $this->filter->filterByRam($servers, $request))
                 ->when($request->hdd      ?? false, fn ($servers) => $this->filter->filterByHdd($servers, $request))
                 ->when($request->location ?? false, fn ($servers) => $this->filter->filterByLocation($servers, $request));

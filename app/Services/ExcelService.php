@@ -20,7 +20,7 @@ class ExcelService
     public function importServers(): Collection
     {
         try {
-            $servers = (new FastExcel)->import('LeaseWeb_servers_filters_assignment.xlsx', function ($line) {
+            $servers = (new FastExcel)->import(storage_path('app/public/LeaseWeb_servers_filters_assignment.xlsx'), function ($line) {
                 return Server::make([
                     'model' => $line['Model'],
                     'ram' => $line['RAM'],

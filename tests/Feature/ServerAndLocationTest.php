@@ -2,20 +2,16 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ServerAndLocationTest extends TestCase
 {
-    // use RefreshDatabase;
 
     /**
-     * Test the server index API endpoint.
-     *
-     * @return void
+     * @test
+     * @group servers
      */
-    public function testServerIndex()
+    public function get_servers_feature_is_working()
     {
         // Perform a GET request to the server index endpoint
         $response = $this->get('/api/v1/servers');
@@ -24,17 +20,33 @@ class ServerAndLocationTest extends TestCase
         $response->assertStatus(200);
 
         // Assert that the response contains JSON data
-        $response->assertJson([
-            // Add your assertions for the expected JSON data returned by the endpoint
+        $response->assertJsonStructure([
+            'data' => [
+                [
+                    'model',
+                    'ram' => [
+                        'capacity',
+                        'type',
+                    ],
+                    'hdd' => [
+                        'capacity',
+                        'type',
+                    ],
+                    'location' => [
+                        'name',
+                        'code',
+                    ],
+                    'price',
+                ],
+            ],
         ]);
     }
 
     /**
-     * Test the locations index API endpoint.
-     *
-     * @return void
+     * @test
+     * @group servers
      */
-    public function testLocationIndex()
+    public function get_servers_location_feature_is_working()
     {
         // Perform a GET request to the locations index endpoint
         $response = $this->get('/api/v1/locations');
@@ -43,8 +55,13 @@ class ServerAndLocationTest extends TestCase
         $response->assertStatus(200);
 
         // Assert that the response contains JSON data
-        $response->assertJson([
-            // Add your assertions for the expected JSON data returned by the endpoint
+        $response->assertJsonStructure([
+            'data' => [
+                [
+                    'name',
+                    'code',
+                ],
+            ],
         ]);
     }
 }
