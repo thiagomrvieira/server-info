@@ -27,6 +27,13 @@ This repository contains an application that provides a list of server informati
   - [x] Optimized load times using cache
   - [ ] Optimized rendering performance using pagination
 
+## For next updates
+
+- **General**
+  - [ ] Pagination
+  - [ ] Swagger open api
+  - [ ] Docker
+
 ## How to Use
 
 1. Clone the repository to your local machine.
