@@ -50,6 +50,12 @@ The project is structured as follows:
 - `app/Http/Controllers/API/V1/ServerController.php`: The server API controller.
 - `app/Repositories/Interfaces/ServerRepositoryInterface.php`: The server repository interface.
 - `app/Repositories/ServerEloquentRepository.php`: The server repository implementation using Laravel's Eloquent ORM.
+- `app/Services/ExcelServide.php`: The service responsible for read the xls.
+- `app/Services/FilterServide.php`: The server responsible for filters in Eloquent collections.
+- `app/Http/Resources/LocationResource.php`: Laravel API Resource / Transformation layer for Location requests.
+- `app/Http/Resources/ServerResource.php`: Laravel API Resource / Transformation layer for Server Specs requests.
+- `app/Http/Resources/ServerSpecsResource.php`: Laravel API Resource / Transformation layer for Location requets.
+- `app/Models/Server.php`: The Eloquent ORM instance of the Servers.
 - `resources/views/server-list.blade.php`: The frontend view for the server list.
 - `resources/js/components/ServerList.vue`: The Vue.js component for the server list.
 - `routes/api.php`: The API routes for the server list.
