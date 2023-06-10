@@ -1,36 +1,42 @@
 <template>
     <div>
-      <h2>{{ $t('filter') }}</h2>
-      <div class="filter-item">
-        <label for="storage">{{ $t('name') }}:</label>
-        <input type="range" id="storage" v-model="selectedStorage" min="0" max="11" step="1" @input="applyFilters" />
-        <span>{{ storageOptions[selectedStorage] }}</span>
+      <div class="flex items-center mb-2">
+        <!-- <label class="mr-2 text-gray-600">{{ $t('name') }}:</label>
+        <div class="relative w-64">
+          <input class="w-full h-2 bg-gray-300 rounded-full" type="range" id="storage" v-model="selectedStorage" min="0" max="11" step="1" @input="applyFilters" />
+          <div class="absolute left-0 right-0 top-0 -mt-3 flex justify-between">
+            <span class="text-xs text-gray-600">{{ storageOptions[0] }}</span>
+            <span class="text-xs text-gray-600">{{ storageOptions[11] }}</span>
+          </div>
+        </div> -->
       </div>
-      <div class="filter-item">
-        <label>{{ $t('ram') }}:</label>
-        <div v-for="ram in ramOptions" :key="ram">
+      <div class="flex items-center mb-2">
+        <label class="mr-2 text-gray-600">{{ $t('ram') }}:</label>
+        <div v-for="ram in ramOptions" :key="ram" class="mr-2">
           <input type="checkbox" :id="ram" :value="ram" v-model="selectedRam" @change="applyFilters" />
-          <label :for="ram">{{ ram }}</label>
+          <label :for="ram" class="mr-2 text-gray-600">{{ ram }}</label>
         </div>
       </div>
-      <div class="filter-item">
-        <label>{{ $t('harddisk_type') }}:</label>
-        <select v-model="selectedHarddiskType" @change="applyFilters">
+      <div class="flex items-center mb-2">
+        <label class="mr-2 text-gray-600">{{ $t('harddisk_type') }}:</label>
+        <select class="mr-2 bg-gray-200 rounded-md px-2 py-1 text-gray-600" v-model="selectedHarddiskType" @change="applyFilters">
           <option value="">{{ $t('all') }}</option>
           <option value="SAS">SAS</option>
           <option value="SATA">SATA</option>
           <option value="SSD">SSD</option>
         </select>
       </div>
-      <div class="filter-item">
-        <label>{{ $t('location') }}:</label>
-        <select v-model="selectedLocation" @change="applyFilters">
+      <div class="flex items-center">
+        <label class="mr-2 text-gray-600">{{ $t('location') }}:</label>
+        <select class="bg-gray-200 rounded-md px-2 py-1 text-gray-600" v-model="selectedLocation" @change="applyFilters">
           <option value="">{{ $t('all') }}</option>
           <option v-for="location in locations" :key="location.code" :value="location.code">{{ location.name }}</option>
         </select>
       </div>
     </div>
   </template>
+
+
 
 <script>
     export default {

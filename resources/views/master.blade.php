@@ -7,12 +7,10 @@
 
 	@vite('resources/css/app.css')
 </head>
-<body>
-    <div id="app">
+<body class="bg-gray-100">
+    <div id="app" class="container mx-auto py-8">
         @yield('content')
     </div>
-
 	@vite('resources/js/app.js')
-
 </body>
 </html>

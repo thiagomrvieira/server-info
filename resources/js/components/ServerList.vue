@@ -1,18 +1,37 @@
 <template>
-    <div>
-        <h1>{{ $t('server_list') }}</h1>
-        <server-filter @apply-filters="applyFilters"></server-filter>
-        <ul>
-            <li v-for="server in filteredServers" :key="server">
-                <h2>{{ server.model }}</h2>
-                <p>{{ $t('ram') }}: {{ server.ram.capacity }} ({{ server.ram.type }})</p>
-                <p>{{ $t('hdd') }}: {{ server.hdd.capacity }} ({{ server.hdd.type }})</p>
-                <p>{{ $t('location') }}: {{ server.location.name }} ({{ server.location.code }})</p>
-                <p>{{ $t('price') }}: {{ server.price }}</p>
-            </li>
-        </ul>
+    <div class="p-4">
+      <h1 class="text-2xl font-bold">{{ $t('server_list') }}</h1>
+      <server-filter @apply-filters="applyFilters" class="my-4"></server-filter>
+      <ul class="space-y-4">
+        <li v-for="server in filteredServers" :key="server" class="border p-4 rounded-lg bg-gray-200">
+          <h2 class="text-lg font-semibold">{{ server.model }}</h2>
+          <div class="text-gray-600">
+            <p class="flex items-center">
+              <span class="mr-2">{{ $t('ram') }}:</span>
+              <span>{{ server.ram.capacity }}</span>
+              <span class="mx-1">({{ server.ram.type }})</span>
+            </p>
+            <p class="flex items-center">
+              <span class="mr-2">{{ $t('hdd') }}:</span>
+              <span>{{ server.hdd.capacity }}</span>
+              <span class="mx-1">({{ server.hdd.type }})</span>
+            </p>
+            <p class="flex items-center">
+              <span class="mr-2">{{ $t('location') }}:</span>
+              <span>{{ server.location.name }}</span>
+              <span class="mx-1">({{ server.location.code }})</span>
+            </p>
+            <p>{{ $t('price') }}: {{ server.price }}</p>
+          </div>
+        </li>
+      </ul>
     </div>
-</template>
+  </template>
+
+
+
+
+
 
 <script>
     import ServerFilter from './ServerFilter.vue';
