@@ -22,7 +22,6 @@ This repository contains an application that provides a list of server informati
 - **User Interface**
   - [x] Implemented user interface for the server list
   - [x] Improved user interface design and usability
-  - [ ] Pagination
 
 - **Optimization**
   - [x] Optimized load times using cache
@@ -33,7 +32,6 @@ This repository contains an application that provides a list of server informati
 1. Clone the repository to your local machine.
 2. Set up the backend API:
    - Install PHP and Laravel.
-   - Configure the database connection in the `.env` file.
    - Migrate the database tables using Laravel's migration command.
    - Run the Laravel development server.
 3. Set up the frontend:
@@ -58,14 +56,9 @@ The project is structured as follows:
 
 To run the tests:
 
-1. Set up the testing environment for both the backend and frontend.
-2. Run the unit tests for the backend using Laravel's testing framework.
-3. Run the functional tests for the frontend using a suitable testing framework.
+1. Run the unit tests for the backend using Laravel's testing framework using `php artisan test`.
 
 ## Contributors
 
-- [Your Name](https://github.com/thiagomrvieira)
+- [Thiago Vieira](https://github.com/thiagomrvieira)
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
