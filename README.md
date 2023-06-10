@@ -1,4 +1,4 @@
-# Server List Application
+# Server List Application - Technical Assignment
 
 This repository contains an application that provides a list of server information to customers. The application allows customers to quickly find servers based on their specific requirements and compare server specifications and prices. The data for the server list is provided through an Excel sheet and is not stored in a database.
 
@@ -32,8 +32,8 @@ This repository contains an application that provides a list of server informati
 1. Clone the repository to your local machine.
 2. Set up the backend API:
    - Install PHP and Laravel.
-   - Migrate the database tables using Laravel's migration command.
-   - Run the Laravel development server.
+   - Install dependncies using `composer install`.
+   - Run the Laravel development server using `php artisan serve`.
 3. Set up the frontend:
    - Install Node.js and Vue.js.
    - Navigate to the frontend directory.
