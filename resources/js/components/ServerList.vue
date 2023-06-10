@@ -2,7 +2,7 @@
     <div class="p-4">
         <h1 class="text-2xl font-bold">{{ $t('server_list') }}</h1>
         <server-filter @apply-filters="applyFilters" class="my-4"></server-filter>
-        <ul class="space-y-4">
+        <ul v-if="filteredServers.length > 0" class="space-y-4">
             <li v-for="server in filteredServers" :key="server" class="border p-4 rounded-lg bg-gray-200">
                 <h2 class="text-lg font-semibold">{{ server.model }}</h2>
                 <div class="text-gray-600">
@@ -25,6 +25,9 @@
                 </div>
             </li>
         </ul>
+        <div v-else class="border p-4 rounded-lg bg-gray-200">
+            <p class="text-gray-600">{{ $t('no_results') }}</p>
+        </div>
     </div>
 </template>
 

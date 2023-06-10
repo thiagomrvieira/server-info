@@ -7,5 +7,6 @@
     "filter": "Filter",
     "harddisk_type": "Harddisk type",
     "name": "Name",
-    "all": "All"
+    "all": "All",
+    "no_results": "No results found"
 }
