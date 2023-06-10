@@ -32,13 +32,15 @@ This repository contains an application that provides a list of server informati
 1. Clone the repository to your local machine.
 2. Set up the backend API:
    - Install PHP and Laravel.
-   - Install dependncies using `composer install`.
+   - Install dependencies using `composer install`.
+   - Copy the `.env.example` file and rename it to `.env`.
+   - Generate an application key using `php artisan key:generate`.
    - Run the Laravel development server using `php artisan serve`.
 3. Set up the frontend:
    - Install Node.js and Vue.js.
    - Navigate to the frontend directory.
    - Install the required dependencies using `npm install`.
-   - Run the development server using `npm run serve`.
+   - Run the development server using `npm run dev`.
 4. Access the application in your web browser.
 
 ## Project Structure
@@ -61,4 +63,3 @@ To run the tests:
 ## Contributors
 
 - [Thiago Vieira](https://github.com/thiagomrvieira)
-
