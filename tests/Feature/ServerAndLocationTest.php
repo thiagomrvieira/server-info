@@ -6,9 +6,9 @@ use Tests\TestCase;
 
 class ServerAndLocationTest extends TestCase
 {
-
     /**
      * @test
+     *
      * @group servers
      */
     public function get_servers_feature_is_working()
@@ -44,6 +44,7 @@ class ServerAndLocationTest extends TestCase
 
     /**
      * @test
+     *
      * @group servers
      */
     public function get_servers_location_feature_is_working()

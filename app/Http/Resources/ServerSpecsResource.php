@@ -15,8 +15,8 @@ class ServerSpecsResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'capacity' => explode(" ", $this->resource)[0],
-            'type' => explode(" ", $this->resource)[1]
+            'capacity' => explode(' ', $this->resource)[0],
+            'type' => explode(' ', $this->resource)[1],
         ];
     }
 }

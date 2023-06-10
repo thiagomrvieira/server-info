@@ -14,10 +14,10 @@ class LocationResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $location = explode(" ", $this->location ?? $this->resource);
+        $location = explode(' ', $this->location ?? $this->resource);
 
         return [
-            'name' => count($location) == 2 ? $location[0] : $location[0] . ' ' .  $location[1],
+            'name' => count($location) == 2 ? $location[0] : $location[0].' '.$location[1],
             'code' => count($location) == 2 ? $location[1] : $location[2],
         ];
     }

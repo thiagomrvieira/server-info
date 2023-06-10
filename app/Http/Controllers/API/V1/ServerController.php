@@ -10,15 +10,14 @@ use Illuminate\Support\Facades\Log;
 
 class ServerController extends Controller
 {
-
     public function __construct(
         public ServerRepositoryInterface $servers
-    ){}
+    ) {
+    }
 
     /**
      * Display a listing of servers with filtering.
      *
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function index(Request $request)
@@ -28,9 +27,9 @@ class ServerController extends Controller
                 $this->servers->getServers($request)
             );
         } catch (\Exception $e) {
-            Log::error('An error occurred in the LocationController: ' . $e->getMessage());
+            Log::error('An error occurred in the LocationController: '.$e->getMessage());
+
             return response()->json(['error' => 'An error occurred.'], 500);
         }
     }
-
 }

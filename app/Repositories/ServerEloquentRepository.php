@@ -15,12 +15,12 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     public function __construct(
         public FilterService $filter,
         public ExcelService $excelService
-    ){}
+    ) {
+    }
 
     /**
      * Get filtered servers based on the request parameters.
      *
-     * @param Request|null $request
      * @return Collection|Server[]
      *
      * @throws \ErrorException
@@ -29,18 +29,18 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     {
         try {
 
-            if (!Cache::has('servers')) {
+            if (! Cache::has('servers')) {
                 Cache::put('servers', $this->excelService->importServers());
             }
 
             $filteredServers = Cache::get('servers')
-                ->when($request->ram      ?? false, fn ($servers) => $this->filter->filterByRam($servers, $request))
-                ->when($request->hdd      ?? false, fn ($servers) => $this->filter->filterByHdd($servers, $request))
+                ->when($request->ram ?? false, fn ($servers) => $this->filter->filterByRam($servers, $request))
+                ->when($request->hdd ?? false, fn ($servers) => $this->filter->filterByHdd($servers, $request))
                 ->when($request->location ?? false, fn ($servers) => $this->filter->filterByLocation($servers, $request));
 
             return $filteredServers;
         } catch (\Exception $e) {
-            Log::error('An error occurred during retrieving servers data: ' . $e->getMessage());
+            Log::error('An error occurred during retrieving servers data: '.$e->getMessage());
             throw new \ErrorException('Error retrieving servers data.');
         }
 
@@ -49,7 +49,6 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     /**
      * Get unique server locations.
      *
-     * @return Collection
      *
      * @throws \ErrorException
      */
@@ -57,17 +56,15 @@ class ServerEloquentRepository implements ServerRepositoryInterface
     {
         try {
 
-            if (!Cache::has('serverLocations')) {
+            if (! Cache::has('serverLocations')) {
                 Cache::put('serverLocations', $this->getServers()->unique('location'));
             }
 
             return Cache::get('serverLocations');
         } catch (\Exception $e) {
-            Log::error('An error occurred during retrieving servers location data: ' . $e->getMessage());
+            Log::error('An error occurred during retrieving servers location data: '.$e->getMessage());
             throw new \ErrorException('Error retrieving servers location data.');
         }
 
     }
-
 }
-

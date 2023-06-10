@@ -2,8 +2,9 @@
 
 namespace App\Repositories\Interfaces;
 
-Interface ServerRepositoryInterface
+interface ServerRepositoryInterface
 {
     public function getServers();
+
     public function getServersLocations();
 }

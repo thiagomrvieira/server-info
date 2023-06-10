@@ -7,7 +7,6 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Rap2hpoutre\FastExcel\FastExcel;
 
-
 class ExcelService
 {
     /**
@@ -26,15 +25,14 @@ class ExcelService
                     'ram' => $line['RAM'],
                     'hdd' => $line['HDD'],
                     'location' => $line['Location'],
-                    'price' => $line['Price']
+                    'price' => $line['Price'],
                 ]);
             });
 
             return $servers;
         } catch (\Exception $e) {
-            Log::error('An error occurred during servers import: ' . $e->getMessage());
+            Log::error('An error occurred during servers import: '.$e->getMessage());
             throw new \ErrorException('Error importing servers data.');
         }
     }
-
 }

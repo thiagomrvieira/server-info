@@ -11,9 +11,8 @@ class Server extends Model
     use HasFactory;
 
     protected $fillable = [
-        'model','ram', 'hdd', 'location', 'price'
+        'model', 'ram', 'hdd', 'location', 'price',
     ];
-
 
     /**
      * Get the server's HDD data.
@@ -29,8 +28,7 @@ class Server extends Model
     protected function location(): Attribute
     {
         return Attribute::make(
-            get: fn (string $value) =>
-                substr($value, 0, strlen($value) - 6) . ' ' .
+            get: fn (string $value) => substr($value, 0, strlen($value) - 6).' '.
                 substr($value, strlen($value) - 6),
         );
     }
@@ -55,5 +53,4 @@ class Server extends Model
             get: fn (string $value) => preg_replace($pattern, $replacement, $value),
         );
     }
-
 }

@@ -10,11 +10,12 @@ class FilterService
 
         return $collection->filter(function ($item) use ($ramFilters) {
             foreach ($ramFilters as $ramFilter) {
-                $pattern = '/\b' . preg_quote($ramFilter) . '\b/i';
+                $pattern = '/\b'.preg_quote($ramFilter).'\b/i';
                 if (preg_match($pattern, $item)) {
                     return true;
                 }
             }
+
             return false;
         });
     }
@@ -36,6 +37,4 @@ class FilterService
             return stripos($item, $locationFilter) !== false;
         });
     }
-
-
 }

@@ -14,7 +14,9 @@ use PHPUnit\Framework\TestCase;
 class ServerEloquentRepositoryTest extends TestCase
 {
     private $repository;
+
     private $filterService;
+
     private $excelService;
 
     protected function setUp(): void
@@ -40,6 +42,7 @@ class ServerEloquentRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @group serverRepository
      */
     public function getServers_returns_collection()
@@ -56,6 +59,7 @@ class ServerEloquentRepositoryTest extends TestCase
 
     /**
      * @test
+     *
      * @group serverRepository
      */
     public function getServersLocations_returns_collection()
