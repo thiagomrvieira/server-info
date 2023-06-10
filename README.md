@@ -21,10 +21,12 @@ This repository contains an application that provides a list of server informati
 
 - **User Interface**
   - [x] Implemented user interface for the server list
-  - [ ] Improved user interface design and usability
+  - [x] Improved user interface design and usability
+  - [ ] Pagination
 
 - **Optimization**
-  - [x] Optimized load times and rendering performance
+  - [x] Optimized load times using cache
+  - [ ] Optimized rendering performance using pagination
 
 ## How to Use
 
