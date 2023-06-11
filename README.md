@@ -30,6 +30,8 @@ This repository contains an application that provides a list of server informati
 ## For next updates
 
 - **General**
+  - [ ] Filter by Storage
+  - [ ] End-to-end tests (Dusk)
   - [ ] Pagination
   - [ ] Swagger open api
   - [ ] Docker
